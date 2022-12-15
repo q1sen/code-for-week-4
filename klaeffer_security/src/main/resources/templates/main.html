@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kläffer</title>
+</head>
+<body>
+<h1>Kläffer</h1>
+<ul th:remove="all-but-first">
+    <li th:each="klaeff : ${klaeffpage.klaeffs()}">
+        <a th:href="@{/profil(userId=${klaeff.userId})}"><span th:text="${klaeff.userName}">userName</span> </a>
+        <span th:text="${klaeff.text}">klaeff text</span></li>
+</ul>
+<a th:if="${page}>1" th:href="@{/(page=${page}-1,max=${max})}">Zurück</a>
+<a th:if="${klaeffpage.more()}" th:href="@{/(page=${page}+1,max=${max})}">Weiter</a>
+
+<hr>
+<form method="post" action="/">
+    <label for="nameid">Name:</label>
+    <input id="nameid" type="text" name="name" disabled th:value="${username}">
+    <label for="textid">Text:</label>
+    <input id="textid" type="text" name="text">
+    <button type="submit">Abschicken</button>
+</form>
+
+</body>
+</html>
