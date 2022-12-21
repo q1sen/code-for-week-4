@@ -1,0 +1,12 @@
+version: "3.1"
+services:
+  database:
+    image: postgres:14-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    environment:
+      - "POSTGRES_DB=qisen"
+      - "POSTGRES_USER=qisen"
+      - "POSTGRES_PASSWORD=iamqisen"

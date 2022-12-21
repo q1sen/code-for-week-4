@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    password: iamqisen
+    username: qisen
+    url: jdbc:postgresql://localhost:5432/qisen
+
+
+
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: ${CLIENT_ID}
+            client-secret: ${CLIENT_SECRET}
+            scope: read:public_repo
+
+logging:
+  level:
+    root: error
+
+
+
