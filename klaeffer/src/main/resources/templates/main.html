@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Kläffer</title>
+</head>
+<body>
+<h1>Kläffer</h1>
+<ul th:remove="all-but-first">
+    <li th:each="klaeff : ${klaeffpage.klaeffs()}">
+        <a th:href="@{/profil(id=${klaeff.githubid})}"><span th:text="${klaeff.username}">username</span></a>
+        <span th:text="${klaeff.content}">klaeff text</span></li>
+</ul>
+<a th:if="${page}>1" th:href="@{/(page=${page}-1,max=${max})}">Zurück</a>
+<a th:if="${klaeffpage.more()}" th:href="@{/(page=${page}+1,max=${max})}">Weiter</a>
+
+<hr>
+<form method="post" th:action="@{/}">
+    <label>Name:</label>
+    <input type="hidden" th:name="username" th:value="${username}">
+    <input type="text"  disabled th:value="${username}">
+    <label for="textid">Text:</label>
+    <input Id="textid" type="text" th:name="content">
+    <button type="submit">Abschicken</button>
+</form>
+
+</body>
+</html>
